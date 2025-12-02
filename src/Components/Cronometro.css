@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+/* Contenedor principal del cronómetro */
+.cronometro-container {
+  text-align: center;
+  padding: 50px;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Título principal */
+.cronometro-titulo {
+  color: #333;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+/* Display del tiempo (los números grandes) */
+.cronometro-display {
+  font-size: 80px;
+  font-family: 'Audiowide', monospace;
+  color: #0eff01;
+  background-color: #000000;
+  padding: 30px;
+  border-radius: 15px;
+  margin: 20px auto;
+  max-width: 500px;
+  text-shadow: 
+    0 0 10px #00ff41,
+    0 0 20px #00ff41,
+    0 0 30px #00ff41,
+    0 0 40px #00ff41;
+  box-shadow: 
+    0 4px 10px rgba(0, 255, 65, 0.3),
+    inset 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+/* Etiquetas de MM:SS:MS */
+.cronometro-etiquetas {
+  color: #7f8c8d;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+/* Contenedor de los botones */
+.cronometro-botones {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Estilo base para todos los botones */
+.cronometro-boton {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Botón Iniciar - Verde */
+.boton-iniciar {
+  background-color: #27ae60;
+  color: white;
+}
+
+.boton-iniciar:hover:not(:disabled) {
+  background-color: #229954;
+}
+
+/* Botón Pausar/Reanudar - Naranja */
+.boton-pausar {
+  background-color: #f39c12;
+  color: white;
+}
+
+.boton-pausar:hover:not(:disabled) {
+  background-color: #e67e22;
+}
+
+/* Botón Reiniciar - Rojo */
+.boton-reiniciar {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.boton-reiniciar:hover {
+  background-color: #c0392b;
+}
+
+/* Botones deshabilitados */
+.cronometro-boton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
