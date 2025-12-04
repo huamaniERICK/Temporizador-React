@@ -1,4 +1,13 @@
+/* Importamos fuente tipo reloj digital */
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Contenedor principal del cronómetro */
 .cronometro-container {
   text-align: center;
@@ -6,32 +15,40 @@
   background-color: #f0f0f0;
   min-height: 100vh;
   font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Título principal */
 .cronometro-titulo {
   color: #333;
   font-size: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  font-weight: bold;
 }
 
-/* Display del tiempo (los números grandes) */
+/* Display del tiempo - Los números grandes */
 .cronometro-display {
   font-size: 80px;
   font-family: 'Audiowide', monospace;
+  font-weight: normal;
   color: #0eff01;
   background-color: #000000;
-  padding: 30px;
+  padding: 30px 50px;
   border-radius: 15px;
-  margin: 20px auto;
-  max-width: 500px;
+  margin: 0 auto 20px auto;
+  display: inline-block;
+  letter-spacing: 5px;
+  /* Efecto neón verde */
   text-shadow: 
     0 0 10px #00ff41,
     0 0 20px #00ff41,
-    0 0 30px #00ff41,
-    0 0 40px #00ff41;
+    0 0 30px #00ff41;
+  /* Sombra de la caja */
   box-shadow: 
-    0 4px 10px rgba(0, 255, 65, 0.3),
+    0 8px 20px rgba(0, 255, 65, 0.3),
     inset 0 0 20px rgba(0, 255, 65, 0.1);
 }
 
@@ -39,24 +56,29 @@
 .cronometro-etiquetas {
   color: #7f8c8d;
   font-size: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  letter-spacing: 15px;
+  font-weight: normal;
 }
 
 /* Contenedor de los botones */
 .cronometro-botones {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 15px;
 }
 
 /* Estilo base para todos los botones */
 .cronometro-boton {
-  padding: 15px 30px;
+  padding: 15px 35px;
   font-size: 18px;
+  font-weight: bold;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-weight: bold;
+  transition: all 0.3s ease;
+  min-width: 140px;
 }
 
 /* Botón Iniciar - Verde */
@@ -67,6 +89,12 @@
 
 .boton-iniciar:hover:not(:disabled) {
   background-color: #229954;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);
+}
+
+.boton-iniciar:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 /* Botón Pausar/Reanudar - Naranja */
@@ -77,6 +105,12 @@
 
 .boton-pausar:hover:not(:disabled) {
   background-color: #e67e22;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);
+}
+
+.boton-pausar:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 /* Botón Reiniciar - Rojo */
@@ -87,10 +121,220 @@
 
 .boton-reiniciar:hover {
   background-color: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+}
+
+.boton-reiniciar:active {
+  transform: translateY(0);
 }
 
 /* Botones deshabilitados */
 .cronometro-boton:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
+
+/*DISEÑO RESPONSIVE */
+
+/* Tablets y pantallas medianas (hasta 1024px) */
+@media (max-width: 1024px) {
+  .cronometro-container {
+    padding: 40px 30px;
+  }
+  
+  .cronometro-titulo {
+    font-size: 36px;
+  }
+  
+  .cronometro-display {
+    font-size: 70px;
+    padding: 28px 45px;
+  }
+}
+
+/* Tablets pequeñas (hasta 768px) */
+@media (max-width: 768px) {
+  .cronometro-container {
+    padding: 30px 20px;
+  }
+  
+  .cronometro-titulo {
+    font-size: 32px;
+    margin-bottom: 35px;
+  }
+  
+  .cronometro-display {
+    font-size: 60px;
+    padding: 25px 40px;
+    letter-spacing: 4px;
+  }
+  
+  .cronometro-etiquetas {
+    font-size: 14px;
+    letter-spacing: 12px;
+    margin-bottom: 35px;
+  }
+  
+  .cronometro-boton {
+    padding: 14px 30px;
+    font-size: 17px;
+    min-width: 130px;
+  }
+}
+
+/* Celulares grandes (hasta 600px) */
+@media (max-width: 600px) {
+  .cronometro-container {
+    padding: 25px 15px;
+  }
+  
+  .cronometro-titulo {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .cronometro-display {
+    font-size: 50px;
+    padding: 22px 35px;
+    letter-spacing: 3px;
+  }
+  
+  .cronometro-etiquetas {
+    font-size: 13px;
+    letter-spacing: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .cronometro-botones {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .cronometro-boton {
+    padding: 13px 25px;
+    font-size: 16px;
+    min-width: 120px;
+  }
+}
+
+/* Celulares medianos (hasta 480px) */
+@media (max-width: 480px) {
+  .cronometro-container {
+    padding: 20px 10px;
+  }
+  
+  .cronometro-titulo {
+    font-size: 26px;
+    margin-bottom: 25px;
+    line-height: 1.3;
+  }
+  
+  .cronometro-display {
+    font-size: 42px;
+    padding: 20px 30px;
+    letter-spacing: 2px;
+    /* Reducimos el efecto neón en móviles */
+    text-shadow: 
+      0 0 8px #00ff41,
+      0 0 15px #00ff41;
+  }
+  
+  .cronometro-etiquetas {
+    font-size: 12px;
+    letter-spacing: 8px;
+    margin-bottom: 25px;
+  }
+  
+  /* Los botones se apilan en columna */
+  .cronometro-botones {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    gap: 12px;
+  }
+  
+  .cronometro-boton {
+    width: 100%;
+    padding: 15px 25px;
+    font-size: 16px;
+    min-width: auto;
+  }
+}
+
+/* Celulares pequeños (hasta 400px) */
+@media (max-width: 400px) {
+  .cronometro-titulo {
+    font-size: 24px;
+    margin-bottom: 22px;
+  }
+  
+  .cronometro-display {
+    font-size: 38px;
+    padding: 18px 25px;
+    letter-spacing: 1px;
+  }
+  
+  .cronometro-etiquetas {
+    font-size: 11px;
+    letter-spacing: 7px;
+    margin-bottom: 22px;
+  }
+  
+  .cronometro-botones {
+    max-width: 280px;
+  }
+  
+  .cronometro-boton {
+    padding: 14px 22px;
+    font-size: 15px;
+  }
+}
+
+/* Celulares muy pequeños (hasta 360px) */
+@media (max-width: 360px) {
+  .cronometro-titulo {
+    font-size: 22px;
+  }
+  
+  .cronometro-display {
+    font-size: 34px;
+    padding: 16px 22px;
+    letter-spacing: 0px;
+  }
+  
+  .cronometro-etiquetas {
+    font-size: 10px;
+    letter-spacing: 6px;
+  }
+  
+  .cronometro-boton {
+    padding: 13px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Celulares mini (hasta 320px) */
+@media (max-width: 320px) {
+  .cronometro-titulo {
+    font-size: 20px;
+  }
+  
+  .cronometro-display {
+    font-size: 30px;
+    padding: 14px 20px;
+    letter-spacing: 0px;
+  }
+  
+  .cronometro-etiquetas {
+    font-size: 9px;
+    letter-spacing: 5px;
+  }
+  
+  .cronometro-boton {
+    padding: 12px 18px;
+    font-size: 13px;
+  }
+}
+
